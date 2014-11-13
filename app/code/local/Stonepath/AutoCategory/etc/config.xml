@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Stonepath_AutoCategory>
+      <version>0.1.0</version>
+    </Stonepath_AutoCategory>
+  </modules>
+  <global>
+    <helpers>
+      <autocategory>
+        <class>Stonepath_AutoCategory_Helper</class>
+      </autocategory>
+    </helpers>
+	<blocks>
+	  <autocategory>
+		<class>Stonepath_AutoCategory_Block</class>
+	  </autocategory>
+	</blocks>
+	<models>
+	  <autocategory>
+		<class>Stonepath_AutoCategory_Model</class>
+		<resourceModel>autocategory_mysql4</resourceModel>
+	  </autocategory>
+	  <autocategory_mysql4>
+		<class>Stonepath_AutoCategory_Model_Mysql4</class>
+		<entities>		  
+			  <rule>
+				<table>stonepath_autocategory_rules</table>
+			  </rule>
+        </entities>
+	  </autocategory_mysql4>
+	</models>
+	<resources>
+	  <autocategory_setup>
+		<setup>
+		  <module>Stonepath_AutoCategory</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </autocategory_setup>
+	  <autocategory_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </autocategory_write>
+	  <autocategory_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </autocategory_read>
+	</resources>
+    <events>
+
+       <catalog_product_save_after>
+        <observers>
+          <autocategory>
+            <type>singelton</type>
+            <class>autocategory/observer</class>
+            <method>automizeCategory</method>
+          </autocategory>
+        </observers>
+      </catalog_product_save_after>
+
+      
+    </events>
+  </global>
+  <admin>
+	<routers>
+	  <autocategory>
+	    <use>admin</use>
+		<args>
+		  <module>Stonepath_AutoCategory</module>
+		  <frontName>autocategory</frontName>
+		</args>
+	  </autocategory>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <autocategory module="autocategory">
+		<title>AutoCategory</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <rule module="autocategory">
+		    <title>Manage Rule</title>
+			<sort_order>0</sort_order>
+			<action>autocategory/adminhtml_rule</action>
+		  </rule>
+		</children>
+	  </autocategory>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<autocategory translate="title" module="autocategory">
+			  <title>AutoCategory</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <rule translate="title">
+			<title>Manage Rule</title>
+			<sort_order>0</sort_order>
+		  </rule>
+			  </children>
+			</autocategory>
+			
+			<system>
+                    <children>
+                    	<config>
+                            <children>
+                                    	<autocategory>
+                                        	<title>AutoCategory - All</title>
+                                    	</autocategory>
+                            </children>
+                     </config>
+                </children>
+            </system>
+			
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<autocategory>
+		  <file>autocategory.xml</file>
+		</autocategory>
+	  </updates>
+	</layout>
+  </adminhtml>
+  
+  
+  
+  
+	<default>
+      <autocategory>
+         <settings>
+        	<auto_on_save>1</auto_on_save>
+        	<auto_reverse>0</auto_reverse>
+         </settings>
+      </autocategory>
+   </default>
+  
+</config> 
