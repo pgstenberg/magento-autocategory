@@ -78,17 +78,15 @@
   </admin>
   <adminhtml>
 	<menu>
-	  <autocategory module="autocategory">
-		<title>AutoCategory</title>
-		<sort_order>100</sort_order>
+	  <catalog>
 		<children>
 		  <rule module="autocategory">
-		    <title>Manage Rule</title>
+		    <title>AutoCategory Rules</title>
 			<sort_order>0</sort_order>
 			<action>autocategory/adminhtml_rule</action>
 		  </rule>
 		</children>
-	  </autocategory>
+	  </catalog>
 	</menu>
 	<acl>
 	  <resources>
