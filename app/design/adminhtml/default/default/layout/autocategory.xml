@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <autocategory_adminhtml_rule_index>
+	<reference name="content">
+	  <block type="autocategory/adminhtml_rule" name="rule" />
+	</reference>
+  </autocategory_adminhtml_rule_index>
+</layout>
