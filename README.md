@@ -13,3 +13,6 @@ Features
 - Automatically categories products by any select or boolean attribute.
 - Backend management for all the ''categorisation rules''
 
+Planned-Features
+-----------------------------------------------------
+- Implement all attribute-types.
