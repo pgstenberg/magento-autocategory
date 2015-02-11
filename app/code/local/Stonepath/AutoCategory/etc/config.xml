@@ -125,7 +125,7 @@
 	<layout>
 	  <updates>
 		<autocategory>
-		  <file>autocategory.xml</file>
+		  <file>stonepath_autocategory.xml</file>
 		</autocategory>
 	  </updates>
 	</layout>

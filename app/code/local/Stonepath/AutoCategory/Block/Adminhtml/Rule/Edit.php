@@ -27,6 +27,7 @@ class Stonepath_AutoCategory_Block_Adminhtml_Rule_Edit extends Mage_Adminhtml_Bl
 
 				$json_object = json_encode(Mage::helper("autocategory")->listAttributeOptions(),TRUE);
 
+ 
 				$this->_formScripts[] = "
 
 							function saveAndContinueEdit(){
@@ -63,8 +64,16 @@ class Stonepath_AutoCategory_Block_Adminhtml_Rule_Edit extends Mage_Adminhtml_Bl
 									}
 								}
 							}
-							
 						";
+				
+				if(!empty(Mage::registry("rule_data"))){
+				
+					$this->_formScripts[] = "
+						refreshSelectableOptions();
+						document.getElementById('attribute_option_value').value = ".Mage::registry("rule_data")->getData('attribute_option_value').";
+					";
+				}
+				
 		}
 
 		public function getHeaderText()
