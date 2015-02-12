@@ -21,9 +21,9 @@ class Stonepath_AutoCategory_Helper_Data extends Mage_Core_Helper_Abstract
 		$array_options = array();
 		
 		
-      	foreach ($attribute->getSource()->getAllOptions(true, true) as $instance) {
+      	foreach ($attribute->getSource()->getAllOptions(true) as $instance) {
       		
-      		if(($instance['value'] != "") && ($instance['label'] != ""))
+      		///if(($instance['value'] != "") && ($instance['label'] != ""))
             	$array_options[$instance['value']] = $instance['label'];
         }
         
